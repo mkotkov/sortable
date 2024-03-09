@@ -24,7 +24,8 @@ th {
 }
 
 tr:hover {
-    background-color: #18102b;
+    background-color: #cbfe13;
+    color: #0f051f;
 }
   
 header {
@@ -33,15 +34,15 @@ header {
 }
 
 h1{
+    color: #cbfe13;
     font-weight: 800;
     text-transform: uppercase;
     font-size: 8rem;
     text-align: center;
     margin: 3rem 0;
-    text-shadow: -2px 27px 80px 15px rgba(191,  255,  0, 0.29);
-    -webkit-text-shadow: -1px 0px 17px rgba(95,  225,  62, 0.5);
-    -moz-text-shadow: -1px 0px 17px rgba(95,  225,  62, 0.5);
-    text-shadow: -1px 0px 17px rgba(95,  225,  62, 0.5);
+    -webkit-text-shadow: -1px 0px 17px rgba(162, 225, 62, 0.5);
+    -moz-text-shadow: -1px 0px 17px rgba(171, 225, 62, 0.5);
+    text-shadow: -1px 0px 17px rgba(154, 225, 62, 0.5);
 }
 
 header div{
