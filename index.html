@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superhero Database</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Superhero Database</h1>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <select id="pageSizeSelect">
+      <option value="10">10 per page</option>
+      <option value="20" selected>20 per page</option>
+      <option value="50">50 per page</option>
+      <option value="100">100 per page</option>
+      <option value="all">Show all</option>
+    </select>
+  </header>
+  
+  <main>
+    <table id="heroesTable">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Full Name</th>
+          <th>Powerstats</th>
+          <th>Race</th>
+          <th>Gender</th>
+          <th>Height</th>
+          <th>Weight</th>
+          <th>Place Of Birth</th>
+          <th>Alignment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be populated dynamically -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
