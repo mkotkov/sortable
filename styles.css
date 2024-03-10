@@ -33,6 +33,7 @@ tbody th, tbody td {
 
 th {
     background-color: none;
+    cursor: pointer;
 }
 
 tbody tr:hover {

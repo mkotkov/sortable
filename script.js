@@ -1,7 +1,11 @@
 const searchInput = document.getElementById("searchInput"); //get the search bar
 const pageSizeSelect = document.getElementById("pageSizeSelect"); //get the selector
 const heroesTableBody = document.querySelector("#heroesTable tbody"); //get the table body
+const heroesTableHeader = document.querySelectorAll('#heroesTable th')//get the table header
 let heroesData = []; //empty data variable
+
+// Define a state object to keep track of sorting order for each column
+const sortState = {};
 
 //execute a function when the page loads
 document.addEventListener("DOMContentLoaded", function() {
@@ -29,6 +33,7 @@ searchInput.addEventListener('input', function() {
   const searchTerm = this.value.trim().toLowerCase();
 
   const filteredData = heroesData.filter(hero => hero.name.toLowerCase().includes(searchTerm));
+
   displayData(filteredData);
 });
 
@@ -44,6 +49,14 @@ searchInput.addEventListener('input', function() {
       displayData(currentPageData);
     }
   });
+
+heroesTableHeader.forEach((header, index) => {
+    header.addEventListener('click', () => {
+        sortData(index); // Call sortData function when header is clicked
+    });
+});
+
+
 
 });
 
@@ -80,3 +93,66 @@ function displayData(data) {
   });
 }
 
+function sortData(columnIndex) {
+  // Create a copy of the data array to avoid modifying the original data
+  const sortedData = [...heroesData];
+  
+  // Define sorting function based on the column index
+  let sortingFunction;
+
+    // Check if the current column has been sorted before
+  if (sortState[columnIndex] === 'asc') {
+      // If previously sorted in ascending order, sort in descending order
+      sortingFunction = (a, b) => compareValues(b, a); // Reverse sorting order
+      sortState[columnIndex] = 'desc'; // Update sorting state to descending
+  } else {
+      // If not sorted before or sorted in descending order, sort in ascending order
+      sortState[columnIndex] = 'asc'; // Update sorting state to ascending
+  }
+
+
+  switch (columnIndex) {
+      case 1: // Sort by hero name
+          sortingFunction = (a, b) => compareStrings(a.name, b.name);
+          break;
+      case 2: // Sort by hero full name
+          sortingFunction = (a, b) => compareStrings(a.biography.fullName, b.biography.fullName);
+          break;
+      case 4: // Sort by race
+          sortingFunction = (a, b) => compareStrings(a.appearance.race, b.appearance.race);
+          break;
+      case 5: // Sort by gender
+          sortingFunction = (a, b) => compareStrings(a.appearance.gender, b.appearance.gender);
+          break;
+      default:
+          return; // If invalid column index, just exit the function
+  }
+  
+
+  
+  // Sort the data using the defined sorting function
+  sortedData.sort(sortingFunction);
+  
+  // Display the sorted data
+  displayData(sortedData);
+}
+
+// Function to compare two strings, handling null values by placing them at the bottom
+function compareStrings(a, b) {
+  // Handle null values
+  if (a === null && b === null) return 0;
+  if (a === null) return 1;
+  if (b === null) return -1;
+  // Compare strings
+  return a.localeCompare(b);
+}
+
+// Function to compare two values, handling null values by placing them at the bottom
+function compareValues(a, b) {
+  // Handle null values
+  if (a === null && b === null) return 0;
+  if (a === null) return 1;
+  if (b === null) return -1;
+  // Compare values
+  return a - b;
+}
