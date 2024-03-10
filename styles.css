@@ -12,7 +12,19 @@ table {
     font-weight: 400;
 }
 
-th, td {
+thead th, thead th{
+    color: #cbfe13;
+    font-weight: 400;
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #0f051f;
+}
+
+tbody th, tbody td {
     border: 1px solid #ffffff;
     padding: 8px;
     text-align: left;
@@ -23,7 +35,7 @@ th {
     background-color: none;
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: #cbfe13;
     color: #0f051f;
 }
@@ -67,7 +79,8 @@ input[type="text"]{
 }
 
 select {
-    background: white;
+    font-family: "Oswald", sans-serif;
+    background: #cbfe13;
     color: #0f051f;
     border: none;
     margin: 5px;
